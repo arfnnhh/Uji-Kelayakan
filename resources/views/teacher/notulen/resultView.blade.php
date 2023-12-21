@@ -94,6 +94,12 @@
                 <p>Kepala SMK Wikrama Bogor</p>
                 <p>(........................)</p>
             </div>
+
+            @if ($dataS->attachment != null)
+                <div>
+                    <img src="{{ public_path($dataS->attachment) }}">
+                </div>
+            @endif
         </div>
     </div>
     <hr>

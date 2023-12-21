@@ -64,6 +64,12 @@
             display: flex;
             justify-content: space-around;
         }
+
+        .lampiran>img {
+            margin-top: 400px;
+            width: 200px;
+            height: 200px;
+        }
     </style>
 </head>
 <body>
@@ -120,6 +126,13 @@
         <p>Kepala SMK Wikrama Bogor</p>
         <p>(........................)</p>
     </div>
+
+    @if ($data->attachment != null)
+        <div class="lampiran">
+            <img src="{{ public_path($data->attachment) }}">
+        </div>
+    @endif
+
 </div>
 </body>
 </html>

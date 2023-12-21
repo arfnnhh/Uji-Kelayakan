@@ -49,7 +49,17 @@ class SuratController extends Controller
             'notulis' => 'required',
         ]);
 
-        $data = $request->all();
+        if($request->file('attachment')){
+            $file= $request->file('attachment');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path(), $filename);
+            $data = $request->all();
+            $data['attachment']= $filename;
+        } else {
+            $data = $request->all();
+        }
+
+
         Letter::Create($data);
         return redirect()->route('staff.surat.data')->with('suratAdded', 'Berhasil menambahkan surat');
     }
@@ -111,17 +121,5 @@ class SuratController extends Controller
         return view('teacher.notulen.resultView', compact('dataR', 'dataS'));
     }
 
-//    public function storeImage(Request $request){
-//
-//        if($request->file('image')){
-//            $file= $request->file('image');
-//            $filename= date('YmdHi').$file->getClientOriginalName();
-//            $file-> move(public_path('public/Image'), $filename);
-//            $data['image']= $filename;
-//        }
-//        $data->save();
-//        return redirect()->route('images.view');
-//
-//    }
 
 }

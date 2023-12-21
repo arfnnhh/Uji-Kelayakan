@@ -129,17 +129,17 @@
                     <td class="px-6 py-4">
                         {{ App\Models\User::find($w->notulis)->name }}
 
-{{--                    @if(auth()->user()->id == 'teacher')--}}
-                    <td class="px-6 py-4">
-                        @if (App\Models\Result::where('letter_id', $w->id)->exists())
-                            <a href="{{ route('teacher.surat.hasil.viewHasil', $w->id) }}" type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Lihat</a>
-                        @elseif ($w->notulis == auth()->user()->id)
-                            <a href="{{ route('teacher.surat.hasil.view',$w->id) }}" type="button" class="focus:outline-none text-white bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buat</a>
-                        @else
-                            <p class="text-red-600">Belum Dibuat</p>
-                        @endif
-                    </td>
-{{--                    @endif--}}
+                    @if(auth()->user()->role == 'teacher')
+                        <td class="px-6 py-4">
+                            @if (App\Models\Result::where('letter_id', $w->id)->exists())
+                                <a href="{{ route('teacher.surat.hasil.viewHasil', $w->id) }}" type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Lihat</a>
+                            @elseif ($w->notulis == auth()->user()->id)
+                                <a href="{{ route('teacher.surat.hasil.view',$w->id) }}" type="button" class="focus:outline-none text-white bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buat</a>
+                            @else
+                                <p class="text-red-600">Belum Dibuat</p>
+                            @endif
+                        </td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>

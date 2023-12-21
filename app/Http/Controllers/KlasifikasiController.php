@@ -94,7 +94,7 @@ class KlasifikasiController extends Controller
 
     public function tchIndex() {
         $userid = auth()->user()->id;
-        $suratCount = Letter::where('notulis', $userid)->count();
+        $suratCount = Letter::whereJsonContains('recipient', strval($userid))->count();
 
         return view('teacher.teacherDsb', compact('suratCount'));
     }
