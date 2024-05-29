@@ -96,7 +96,7 @@
                 <th scope="col" class="px-6 py-3">
                     Notulis
                 </th>
-                @if(auth()->user()->id == 'teacher')
+                @if(auth()->user()->role == 'teacher')
                     <th scope="col" class="px-6 py-3">
                         Hasil Rapat
                     </th>
@@ -144,5 +144,11 @@
             @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="flex flex-col items-center mt-2">
+        <div class="mx-4 text-gray-600">
+            Showing {{ $data->firstItem() }} to {{ $data->lastItem() }} results
+        </div>
+        {{ $data->links() }}
     </div>
 @endsection

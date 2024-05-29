@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[AuthController::class, 'index'])->name('login');
-Route::post('/postlogin',[AuthController::class, 'postlogin'])->name('postlogin');
+Route::post('/postlogin',[AuthController::class, 'postlogin'])->name( 'postlogin');
 Route::get('/restricted',[AuthController::class, 'restricted'])->name('restrict');
 Route::get('/signout',[AuthController::class, 'signout'])->name('logout');
 
@@ -43,7 +43,6 @@ Route::prefix('/staff')->name('staff.')->middleware(['auth', 'Staff'])->group( f
             Route::get('/view/pdf/{id}', [KlasifikasiController::class, 'view_pdf'])->name('viewpdf');
         });
     });
-
     Route::prefix('/user')->name('user.')->group(function () {
         Route::get('/data', [UserController::class, 'index'])->name('index');
         Route::get('/addUser', [UserController::class,'add'])->name('add');

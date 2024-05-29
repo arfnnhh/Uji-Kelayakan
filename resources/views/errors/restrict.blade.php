@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Not found</title>
     @vite(['resources/css/app.css','resources/js/app.js'])</head>
-<body class="bg-light">
-<div class="d-flex justify-content-center flex-column" style="margin-top: 15%">
+    <body class="bg-light">
+    <div class="d-flex justify-content-center flex-column" style="margin-top: 15%">
     <h1 class="text-center text-8xl">404</h1>
     <h5 class="text-center">Not Found</h5>
     <div class="flex justify-center">

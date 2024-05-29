@@ -19,9 +19,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'username',
         'password',
-        'role',
+        'level',
     ];
 
     /**
@@ -44,7 +44,4 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function Letter() {
-        return $this->hasMany(Letter::class);
-    }
 }
